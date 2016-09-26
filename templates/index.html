@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Proman</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.css">
-</head>
-<body>
-    <div class = "main_div">
+{% extends "wrapper.html" %}
+{% block title %}Boards{% endblock title %}
+{% block head %}
+    {{ super() }}
+{% endblock head %}
 
-
-
-    </div>
-</body>
-</html>
+{% block content %}
+<h1>Ide írj, Anna!!!</h1>
+{% endblock content %}
