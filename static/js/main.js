@@ -1,18 +1,17 @@
-// function Board(title, content){
-//     this.title = title;
-//     this.content = content;
-//     this.balloons = [];
-//
-//     this.addBalloon = function (balloon) {
-//         this.balloons.push(balloon);
-//     };
-// };
-//
-// function Balloon(title, content, owner){
-//     this.title = title;
-//     this.content = content;
-//     owner.addBalloon(this);
-// };
+function Board(title){
+    this.title = title;
+    this.cards = [];
+
+    this.addCard = function (card) {
+        this.cards.push(card);
+    };
+};
+
+function Card(title, content, owner){
+    this.title = title;
+    this.content = content;
+    owner.addCard(this);
+};
 //
 // var first_board = new Board('Shopping to do', 'These are the things you should buy')
 // var milk = new Balloon('Milk', 'Lactose free delicious milk', first_board)
@@ -31,6 +30,7 @@
 $('#create_new_board').click(function(){
     var title = $("input[name=title]").val();
     $('#big_board').append("<div id='board'><p id='title'>"+title+"</p></div>");
-    console.log(title);
+    // new Board(title);
+    localStorage.setItem(title, JSON.stringify(new Board(title)));
 
 });
