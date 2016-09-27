@@ -22,3 +22,15 @@ localStorage.setItem('first', JSON.stringify(first_board));
 
 var retrievedObject = localStorage.getItem('first');
 console.log('retrievedObject: ', JSON.parse(retrievedObject));
+
+$(document).ready(function() {
+    $('button').click(function() {
+    	var toAdd = $("input[name=message]").val();
+        $('#messages').append("<p>"+toAdd+"</p>");
+    });
+});
+
+$('#create_new_board').click(function(){
+    $('#big_board').append("<div id='board'></div>");
+
+});
