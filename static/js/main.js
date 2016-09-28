@@ -24,10 +24,20 @@ function Card(title, content, owner){
 
 
 $(document).ready(function () {
-    for ( var i = 0, len = localStorage.length; i < len; ++i ) {
-        var title = JSON.parse(localStorage.getItem( localStorage.key( i ) ));
-        $('#big_board').append("<div id='board'><p id='title'>"+title["title"]+"</p></div>");
-}
+    if (typeof localStorage.getItem("boards") !== 'undefined'){
+        var boards = JSON.parse(localStorage.getItem("boards"));
+    }else{
+        var boards = new Array();
+    }
+
+    localStorage.setItem("boards", JSON.stringify(boards));
+    // console.log(typeof JSON.parse(localStorage.getItem("boards")));
+
+    // console.log(localStorage.getItem('boards'));
+//     for ( var i = 0, len = localStorage.length; i < len; ++i ) {
+//         var title = JSON.parse(localStorage.getItem( localStorage.key( i ) ));
+//         $('#big_board').append("<div id='board'><p id='title'>"+title["title"]+"</p></div>");
+// }
 });
 
 
@@ -35,5 +45,9 @@ $(document).ready(function () {
 $('#create_new_board').click(function(){
     var title = $("input[name=title]").val();
     $('#big_board').append("<div id='board'><p id='title'>"+title+"</p></div>");
-    localStorage.setItem(title, JSON.stringify(new Board(title)));
+    $("input[name=title]").val('');
+
+    var mylist = JSON.parse(localStorage.getItem("boards"));
+    console.log(mylist);
+
 });
