@@ -23,9 +23,15 @@ function Card(title, content, owner){
 // console.log('retrievedObject: ', JSON.parse(retrievedObject));
 
 $(function(){
+
+    // var getTableData = function() {
+    //     var title = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    // }
+
     var boardClickHandler = function(){
-        var detailedBoard = $("<div class='blur'><div class="detailedBoard"></div></div>")
-        // detailedBoard.on('click', boardClickHandler);
+        var currentTitle = $(this).text();
+        var detailedBoard = $("<div class='blur'><div class='detailedBoard'>"+currentTitle+"</div></div>");
+        detailedBoard.on('click', boardClickHandler);
         $('#big_board').append(detailedBoard);
     }
 
