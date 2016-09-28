@@ -30,7 +30,5 @@ function Card(title, content, owner){
 $('#create_new_board').click(function(){
     var title = $("input[name=title]").val();
     $('#big_board').append("<div id='board'><p id='title'>"+title+"</p></div>");
-    // new Board(title);
     localStorage.setItem(title, JSON.stringify(new Board(title)));
-
 });
