@@ -25,11 +25,8 @@ function Card(title, content, owner){
 
 $(document).ready(function () {
     for ( var i = 0, len = localStorage.length; i < len; ++i ) {
-        console.log( localStorage.getItem( localStorage.key( i ) ) );
-        var title = localStorage.getItem( localStorage.key( i ) );
+        var title = JSON.parse(localStorage.getItem( localStorage.key( i ) ));
         $('#big_board').append("<div id='board'><p id='title'>"+title["title"]+"</p></div>");
-        console.log(title);
-
 }
 });
 
