@@ -28,11 +28,11 @@ $('#create_new_board').click(function(){
     $('#big_board').append("<div id='board'><p id='title'>"+title+"</p></div>");
     $("input[name=title]").val('');
 
+    saveBoard(new Board(title));
     // var boards = JSON.parse(localStorage.getItem("boards"));
     // if(boards == null){
     //     boards = new Array();
     // }
-    saveBoard(new Board(title));
 });
 
 
@@ -55,6 +55,7 @@ function getBoard(title){
  */
 function saveBoard(board){
     boards = JSON.parse(localStorage.getItem("boards"));
+    if(boards == null){ boards = new Array()}
     boards.push(board);
     localStorage.setItem("boards", JSON.stringify(boards));
 }
