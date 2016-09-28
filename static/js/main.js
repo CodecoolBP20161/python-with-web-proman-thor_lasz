@@ -28,10 +28,11 @@ $('#create_new_board').click(function(){
     $('#big_board').append("<div id='board'><p id='title'>"+title+"</p></div>");
     $("input[name=title]").val('');
 
-    var boards = JSON.parse(localStorage.getItem("boards"));
-    if(boards == null){
-        boards = new Array();
-    }
+    // var boards = JSON.parse(localStorage.getItem("boards"));
+    // if(boards == null){
+    //     boards = new Array();
+    // }
+    saveBoard(new Board(title));
 });
 
 
