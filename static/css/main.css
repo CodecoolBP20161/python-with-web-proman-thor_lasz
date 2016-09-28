@@ -3,15 +3,19 @@ html, body
     height: 100%;
 }
 
-#board {
+.board {
     background-color:#6497b1;
-    height:100px;
-    width:100px;
-    display: inline-block;
+    height: 230px;
+    width:200px;
     margin: 10px;
+    border-radius: 5px;
 }
 
 #container{
     margin-top: 50px;
     height: 100%;
+}
+
+#big_board {
+    margin-top: 60px;
 }
