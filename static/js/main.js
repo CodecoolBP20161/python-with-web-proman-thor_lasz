@@ -22,15 +22,24 @@ function Card(title, content, owner){
 // var retrievedObject = localStorage.getItem('first');
 // console.log('retrievedObject: ', JSON.parse(retrievedObject));
 
+$(function(){
+    var boardClickHandler = function(){
+        var detailedBoard = $("<div class='blur'><div class="detailedBoard"></div></div>")
+        // detailedBoard.on('click', boardClickHandler);
+        $('#big_board').append(detailedBoard);
+    }
 
 
 
+    $('#create_new_board').click(function(){
+        var title = $("input[name=title]").val();
+        var newBoard = $("<div class='board'><p class='title'>"+title+"</p></div>")
+        newBoard.on('click', boardClickHandler);
+        $('#big_board').append(newBoard);
+        // new Board(title);
+        localStorage.setItem(title, JSON.stringify(new Board(title)));
 
+    });
 
-$('#create_new_board').click(function(){
-    var title = $("input[name=title]").val();
-    $('#big_board').append("<div id='board'><p id='title'>"+title+"</p></div>");
-    // new Board(title);
-    localStorage.setItem(title, JSON.stringify(new Board(title)));
-
+    $(".board").on('click', boardClickHandler);
 });
