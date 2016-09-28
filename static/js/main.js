@@ -27,14 +27,40 @@ $(function(){
     // var getTableData = function() {
     //     var title = JSON.parse(localStorage.getItem(localStorage.key(i)));
     // }
+    var exampleList = ["adflgkjsdfkl", "sdgklfsd", "dfgd"];
 
     var boardClickHandler = function(){
         var currentTitle = $(this).text();
-        var detailedBoard = $("<div class='blur'><div class='detailedBoard'>"+currentTitle+"</div></div>");
-        detailedBoard.on('click', boardClickHandler);
-        $('#big_board').append(detailedBoard);
-    }
+        // console.log($(this).text());
+        var detailedBoard = $(
+            "<div class='blur'>" +
+                "<div class='detailedBoard'>" +
+                    "<div>" +
+                        "<p id='exit' class ='exit'>x</p>" +
+                        "<p class = 'title' id='detailTitle'>"+currentTitle+"</p>" +
+                    "</div>"+
+                    "<div>"+
+                        
+                "</div></div>" +
 
+            "");
+        // detailedBoard.on('click', exitBoard);
+        $('#big_board').append(detailedBoard);
+
+        $('.exit').click(function(){
+            detailedBoard.remove();
+        })
+
+        $(".exit").hover(function(){
+            document.getElementById("exit").innerHTML = "o";
+        }, function(){
+            document.getElementById("exit").innerHTML = "x";
+        });
+    };
+
+    var exitBoard = function () {
+        this.remove();
+    };
 
 
     $('#create_new_board').click(function(){
@@ -47,5 +73,5 @@ $(function(){
 
     });
 
-    $(".board").on('click', boardClickHandler);
+    // $(".board").on('click', boardClickHandler);
 });
