@@ -21,6 +21,15 @@ $(document).ready(function () {
         side: 'center',
         lines: 3
     });
+
+    $('#board-adder-tile').mouseenter(function() {
+            $(this).children( '#show-edit' ).show();
+            $(this).children( '#show-text' ).hide();
+        });
+    $('#board-adder-tile').mouseleave(function() {
+        $(this).children( '#show-edit' ).hide();
+        $(this).children( '#show-text' ).show();
+        });
 });
 
 
@@ -29,6 +38,14 @@ $(document).ready(function () {
  */
 $('#create_new_board').click(function(){
     var title = $("input[name=title]").val();
+    $('#big_board').append("<div id='board'><p id='title'>"+title+"</p></div>");
+    $("input[name=title]").val('');
+
+    saveBoard(new Board(title));
+});
+
+$('#create_new_board_tile').click(function(){
+    var title = $("input[name=title-from-tile]").val();
     $('#big_board').append("<div id='board'><p id='title'>"+title+"</p></div>");
     $("input[name=title]").val('');
 

@@ -17,11 +17,14 @@ html, body
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     padding-top: 30px;
     font-size: 200%;
+
     /*border-bottom: 5px solid white;*/
 }
 
 .upper{
     border-bottom: 5px solid white;
+    text-align: center;
+    margin-top: 3px;
 }
 
 .bottom {
@@ -30,7 +33,7 @@ html, body
 
 span.bottom-sign {
     font-size: 6.5em;
-    margin: 5px;
+    line-height: 150%;
     color: white;
 }
 
@@ -46,4 +49,12 @@ span.bottom-sign {
 
 #big_board {
     margin-top: 60px;
+}
+
+#show-edit {
+    display: none;
+}
+
+#show-edit, #show-text {
+    height: 60px;
 }
