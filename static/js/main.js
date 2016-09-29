@@ -17,9 +17,9 @@ function Card(title, content, owner){
 
 $(document).ready(function () {
     drawBoards();
-    $('.too-long').trunk8({
+    $('.title').trunk8({
         side: 'center',
-        lines: 4
+        lines: 3
     });
 });
 
@@ -33,10 +33,6 @@ $('#create_new_board').click(function(){
     $("input[name=title]").val('');
 
     saveBoard(new Board(title));
-    // var boards = JSON.parse(localStorage.getItem("boards"));
-    // if(boards == null){
-    //     boards = new Array();
-    // }
 });
 
 
