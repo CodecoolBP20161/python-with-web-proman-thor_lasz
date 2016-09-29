@@ -8,6 +8,7 @@ function Board(title){
 };
 
 function drawBoards() {
+
         if (localStorage.getItem("boards") == null) {
             var boards = new Array();
         }
@@ -15,8 +16,11 @@ function drawBoards() {
             var boards = JSON.parse(localStorage.getItem("boards"));
         }
         for (var i = 0; i < boards.length; i++) {
-            $('#big_board').append("<div id='board'><p id='title'>" + boards[i].title + "</p></div>");
+            var newBoard = $("<div class='board'><p class='title'>" + boards[i].title + "</p></div>");
+            $('#big_board').append(newBoard);
+            newBoard.on('click', boardClickHandler);
         }
+
 
 }
 
@@ -63,6 +67,8 @@ boardClickHandler = function () {
     $('.add').click(function(){
         var card_content = document.getElementById('new_content').value;
         $('#card_field').append("<p class='card_content'>"+ card_content + "</p>");
+        boards = JSON.parse(localStorage.getItem("boards"));
+        console.log(boards)
     })
 }
     /**
@@ -101,18 +107,23 @@ $(document).ready(function () {
  */
 $('#create_new_board').click(function(){
     var title = $("input[name=title]").val();
-    $('#big_board').append("<div id='board'><p id='title'>"+title+"</p></div>");
+    var newBoard = $("<div class='board'><p class='title'>" + title + "</p></div>");
+    $('#big_board').append(newBoard);
     $("input[name=title]").val('');
+    newBoard.on('click', boardClickHandler);
 
     saveBoard(new Board(title));
 });
 
 $('#create_new_board_tile').click(function(){
     var title = $("input[name=title-from-tile]").val();
-    $('#big_board').append("<div id='board'><p id='title'>"+title+"</p></div>");
+    var newBoard = $("<div class='board'><p class='title'>" + title + "</p></div>");
+    $('#big_board').append(newBoard);
     $("input[name=title]").val('');
+    newBoard.on('click', boardClickHandler);
 
     saveBoard(new Board(title));
+    console.log(boards)
 });
 
 /**
@@ -134,7 +145,9 @@ function getBoard(title){
  */
 function saveBoard(board){
     boards = JSON.parse(localStorage.getItem("boards"));
-    if(boards == null){ boards = new Array()}
+    if(boards == null){
+        boards = [];
+    }
     boards.push(board);
     localStorage.setItem("boards", JSON.stringify(boards));
 }
@@ -143,14 +156,3 @@ function saveBoard(board){
 /**
  * Handles drawing existing Board items from the localStorage.
  */
-function drawBoards(){
-    if(localStorage.getItem("boards") == null){
-        var boards = new Array();
-    }else{
-        var boards = JSON.parse(localStorage.getItem("boards"));
-    }
-
-    for(var i = 0; i < boards.length; i++){
-        $('#big_board').append("<div id='board'><p id='title'>" + boards[i].title +"</p></div>");
-    }
-}
