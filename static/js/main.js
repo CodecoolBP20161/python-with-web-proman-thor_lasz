@@ -25,10 +25,14 @@ $(document).ready(function () {
     $('#board-adder-tile').mouseenter(function() {
             $(this).children( '#show-edit' ).show();
             $(this).children( '#show-text' ).hide();
+            $(this).find("#create_new_board_tile").css("color", "#D9DB56");
+            $(this).children( '#show-edit' ).css("border-color", "#D9DB56")
+
         });
     $('#board-adder-tile').mouseleave(function() {
         $(this).children( '#show-edit' ).hide();
         $(this).children( '#show-text' ).show();
+        $(this).find("#create_new_board_tile").css("color", "white");
         });
 });
 
