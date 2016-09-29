@@ -17,6 +17,7 @@ function drawBoards() {
         for (var i = 0; i < boards.length; i++) {
             $('#big_board').append("<div id='board'><p id='title'>" + boards[i].title + "</p></div>");
         }
+
 }
 
 function Card(title, content, owner){
@@ -28,17 +29,22 @@ function Card(title, content, owner){
 
 var boardClickHandler;
 boardClickHandler = function () {
-    var currentTitle = $(this).text();
+    var currentBoard = $(this).text();
     // console.log($(this).text());
     var detailedBoard = $(
         "<div class='blur'>" +
-        "<div class='detailedBoard'>" +
-        "<div>" +
-        "<p id='exit' class ='exit'>x</p>" +
-        "<p class = 'title' id='detailTitle'>" + currentTitle + "</p>" +
-        "</div>" +
-
-        "</div></div>");
+            "<div class='detailedBoard'>" +
+                "<div>" +
+                    "<p id='exit' class ='exit'>x</p>" +
+                    "<p class = 'title' id='detailTitle'>" +currentBoard + "</p>" +
+                "</div>" +
+                "<div id='card_field'></div>" +
+                "<div class='addfield'>" +
+                    "<input type='text' id='new_content'>" +
+                    "<p class='add'>+</p>" +
+                "</div>" +
+            "</div>" +
+        "</div>");
     $('#big_board').append(detailedBoard);
 
     $('.exit').click(function(){
@@ -50,6 +56,11 @@ boardClickHandler = function () {
     }, function(){
         document.getElementById("exit").innerHTML = "x";
     });
+
+    $('.add').click(function(){
+        var card_content = document.getElementById('new_content').value;
+        $('#card_field').append("<p class='card_content'>"+ card_content + "</p>");
+    })
 }
     /**
      * Creates a new Board instance with the name of the content of the inputbox of name title.
@@ -118,6 +129,7 @@ $('#create_new_board').click(function () {
     if (boards == null) {
         boards = new Array();
     };
+    saveBoard(new Board(title));
 });
 
 

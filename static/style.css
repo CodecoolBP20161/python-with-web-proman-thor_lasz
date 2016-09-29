@@ -1,3 +1,8 @@
+html body {
+    height: 100%;
+    width: 100%;
+}
+
 #big_board {
     display: inline-block;
     background-color: #BEDB39;
@@ -64,4 +69,29 @@
 
 #detailTitle{
     padding-top: 30px;
+}
+
+.add{
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    text-shadow: 2px 2px #000000;
+}
+
+input {
+    width: 100%;
+    background-color: #1F8A70;
+}
+
+.addfield {
+    width: 60%;
+    margin: auto;
+    padding-top: 20px;
+}
+
+#card_field {
+    min-height: 70%;
+    border-bottom: solid white;
+
 }
