@@ -15,7 +15,8 @@ function drawBoards() {
             var boards = JSON.parse(localStorage.getItem("boards"));
         }
         for (var i = 0; i < boards.length; i++) {
-            $('#big_board').append("<div id='board'><p id='title'>" + boards[i].title + "</p></div>");
+            console.log(boards[i]);
+            $('#big_board').append("<div class='board'><p class='title'>" + boards[i].title + "</p></div>");
         }
 }
 
@@ -103,6 +104,14 @@ function getBoard(title) {
 
 
 $(document).ready(function () {
+    if(localStorage.getItem("boards") == null){
+        var boards = new Array();
+    }else{
+        var boards = JSON.parse(localStorage.getItem("boards"));
+    }
+    for(var i = 0; i < boards.length; i++){
+        $('#big_board').append("<div id='board'><p id='title'>" + boards[i].title +"</p></div>");
+    }
     drawBoards();
 });
 
@@ -111,16 +120,13 @@ $('#create_new_board').click(function () {
     var newBoard = $("<div class='board'><p class='title'>" + title + "</p></div>")
     newBoard.on('click', boardClickHandler);
     $('#big_board').append(newBoard);
-    // new Board(title);
-    localStorage.setItem(title, JSON.stringify(new Board(title)));
-
-    var boards = JSON.parse(localStorage.getItem("boards"));
-    if (boards == null) {
+    // new Board(title); typeof variable === 'undefined'
+    if(typeof boards === 'undefined'){
         boards = new Array();
-    };
+    }
+    boards.push(new Board(title));
+    localStorage.setItem("boards", JSON.stringify(boards));
 });
-
-
 
 
 
