@@ -17,6 +17,10 @@ function Card(title, content, owner){
 
 $(document).ready(function () {
     drawBoards();
+    $('.too-long').trunk8({
+        side: 'center',
+        lines: 4
+    });
 });
 
 
