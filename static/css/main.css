@@ -118,6 +118,8 @@ input {
 #card_field {
     min-height: 70%;
     border-bottom: solid white;
+    width: 80%;
+    margin: auto;
 
 }
 
@@ -132,4 +134,18 @@ input {
 
 .exit:hover{
     text-shadow: 0px 4px #000000;
+}
+
+.card_content {
+    text-align: left;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    padding-top: 30px;
+    font-size: 150%;
+
+}
+
+.edit{
+    margin-right: 30px;
+    cursor: pointer;
 }

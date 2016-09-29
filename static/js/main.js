@@ -40,37 +40,62 @@ boardClickHandler = function () {
     // console.log($(this).text());
     var detailedBoard = $(
         "<div class='blur'>" +
-            "<div class='detailedBoard'>" +
-                "<div>" +
-                    "<p id='exit' class ='exit'>x</p>" +
-                    "<p class = 'title' id='detailTitle'>" +currentBoard + "</p>" +
-                "</div>" +
-                "<div id='card_field'></div>" +
-                "<div class='addfield'>" +
-                    "<input type='text' id='new_content'>" +
-                    "<p class='add'>+</p>" +
-                "</div>" +
-            "</div>" +
+        "<div class='detailedBoard'>" +
+        "<div>" +
+        "<p id='exit' class ='exit'>x</p>" +
+        "<p class = 'title' id='detailTitle'>" + currentBoard + "</p>" +
+        "</div>" +
+        "<div id='card_field'></div>" +
+        "<p class='edit'>edit</p>" +
+        "<div class='addfield'>" +
+        "<input type='text' id='new_content'>" +
+        "<p class='add'>+</p>" +
+        "</div>" +
+        "</div>" +
         "</div>");
     $('#big_board').append(detailedBoard);
-    
-    $('.exit').click(function(){
+
+    var myBoard = getBoard(currentBoard);
+    for (var i = 0; i < myBoard.cards.length; i++) {
+        $('#card_field').append("<p class='card_content'>" + myBoard.cards[i] + "</p>");
+    }
+
+
+    $('.edit').click(function () {
+        $('.card_content').remove();
+        for (var i =0; i < myBoard.cards.length; i++) {
+            $('#card_field').append("<input type='text' value='" +  myBoard.cards[i] + "' id='new_content'>");
+        }
+
+    });
+
+
+    $('.exit').click(function () {
         detailedBoard.remove();
     })
-    
-    $(".exit").hover(function(){
+
+    $(".exit").hover(function () {
         document.getElementById("exit").innerHTML = "o";
-    }, function(){
+    }, function () {
         document.getElementById("exit").innerHTML = "x";
     });
 
-    $('.add').click(function(){
+    $('.add').click(function () {
         var card_content = document.getElementById('new_content').value;
-        $('#card_field').append("<p class='card_content'>"+ card_content + "</p>");
         boards = JSON.parse(localStorage.getItem("boards"));
         console.log(boards)
+        for (var i = 0; i < boards.length; i++) {
+            if (boards[i].title === currentBoard) {
+                console.log(boards[i].cards);
+                boards[i].cards.push(card_content);
+                console.log(boards[i].cards);
+            }
+        }
+        localStorage.setItem("boards", JSON.stringify(boards));
+        $('#card_field').append("<p class='card_content'>" + card_content + "</p>");
     })
-}
+};
+
     /**
      * Creates a new Board instance with the name of the content of the inputbox of name title.
      */
