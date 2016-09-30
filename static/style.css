@@ -1,0 +1,97 @@
+html body {
+    height: 100%;
+    width: 100%;
+}
+
+#big_board {
+    display: inline-block;
+    background-color: #BEDB39;
+    position: fixed;
+    width: 100%;
+    height: 90%;
+    overflow-y: scroll;
+}
+
+.title {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 2px 2px #000000;
+    border-top: solid 1px white;
+}
+
+
+.board {
+    background-color: #FD7400;
+    border: solid white;
+    height: 50px;
+    width: 150px;
+    margin: 60px;
+    border-radius: 10px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    float: left;
+}
+
+.blur {
+    position: fixed;
+    border-radius: 10px;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 40%;
+    height: 75%;
+    top: 60px;
+    left: 400px;
+    z-index: 1000;
+}
+
+.detailedBoard {
+    background-color: #1F8A70;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    color: white;
+}
+
+.exit {
+    float: right;
+    font-size: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px #000000;
+
+}
+
+.exit:hover{
+    text-shadow: 0px 4px #000000;
+}
+
+#detailTitle{
+    padding-top: 30px;
+}
+
+.add{
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    text-shadow: 2px 2px #000000;
+}
+
+input {
+    width: 100%;
+    background-color: #1F8A70;
+}
+
+.addfield {
+    width: 60%;
+    margin: auto;
+    padding-top: 20px;
+}
+
+#card_field {
+    min-height: 70%;
+    border-bottom: solid white;
+
+}
