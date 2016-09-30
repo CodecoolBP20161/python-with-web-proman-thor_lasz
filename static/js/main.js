@@ -7,6 +7,12 @@ function Board(title){
     };
 };
 
+function drawCards(myBoard) {
+    for (var i = 0; i < myBoard.cards.length; i++) {
+        $('#card_field').append("<p class='card_content'>" + myBoard.cards[i] + "</p>");
+    }
+}
+
 function drawBoards() {
 
         if (localStorage.getItem("boards") == null) {
@@ -54,18 +60,38 @@ boardClickHandler = function () {
         "</div>" +
         "</div>");
     $('#big_board').append(detailedBoard);
-
+    //
     var myBoard = getBoard(currentBoard);
-    for (var i = 0; i < myBoard.cards.length; i++) {
-        $('#card_field').append("<p class='card_content'>" + myBoard.cards[i] + "</p>");
-    }
+    drawCards(myBoard);
 
 
     $('.edit').click(function () {
+        var editedCards = [];
         $('.card_content').remove();
         for (var i =0; i < myBoard.cards.length; i++) {
-            $('#card_field').append("<input type='text' value='" +  myBoard.cards[i] + "' id='new_content'>");
+            $('#card_field').append("<input type='text' value='" +  myBoard.cards[i] + "' class='new_content'>");
+            $('.edit').replaceWith("<p class='save'>save</p>")
         }
+
+        $('.save').click(function () {
+            var card_content = []
+            var inputs = document.getElementsByClassName('new_content');
+            for (var i =0; i < inputs.length; i++) {
+                card_content.push(inputs[i].value);
+            }
+            console.log(card_content)
+            boards = JSON.parse(localStorage.getItem("boards"));
+            console.log(boards)
+            for (var i = 0; i < boards.length; i++) {
+                if (boards[i].title === currentBoard) {
+                    boards[i].cards = card_content;
+                }
+            }
+            localStorage.setItem("boards", JSON.stringify(boards));
+            $('.new_content').remove();
+            drawCards(myBoard);
+            $('.save').replaceWith("<p class='edit'>edit</p>")
+        })
 
     });
 
@@ -86,9 +112,7 @@ boardClickHandler = function () {
         console.log(boards)
         for (var i = 0; i < boards.length; i++) {
             if (boards[i].title === currentBoard) {
-                console.log(boards[i].cards);
                 boards[i].cards.push(card_content);
-                console.log(boards[i].cards);
             }
         }
         localStorage.setItem("boards", JSON.stringify(boards));
