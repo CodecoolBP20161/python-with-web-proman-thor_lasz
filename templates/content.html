@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<!-- <div class="row"> -->
+    <!-- <div class="col-sm-12">
+        <h1>Tájtül</h1>
+        <div class="tile amarelo"></div>
+        <div class="tile azul"></div>
+        <div class="tile tileLargo vermelho"></div>
+        <div class="tile verde"></div>
+        <div class="tile tileLargo amarelo"></div>
+        <div class="tile tileLargo amarelo"></div>
+        <div class="tile azul"></div>
+        <div class="tile verde"></div>
+        <div class="tile vermelho"></div>
+        <div class="tile tileLargo verde"></div>
+        <div class="tile amarelo"></div>
+        <div class="tile verde"></div>
+        <div class="tile vermelho"></div>
+        <div class="tile tileLargo verde"></div>
+        <div class="tile azul"></div>
+        <div class="tile verde"> </div>
+</div> -->
+
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="layout">
+          <label><input id="mixed" name="layout" type="radio" value="mixed" checked=""/> Mixed Tile Size</label>
+          <label><input id="fixed" name="layout" type="radio" value="fixed"/> Fixed Tile Size</label>
+          <label><input id="column" name="layout" type="radio" value="column"/> Single Column</label>
+        </div>
+        <!-- <button id="add">ADD TILE</button> -->
+        <div id="list"></div>
+    </div>
+</div>
+
+
+{% endblock content %}

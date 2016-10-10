@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% endblock title%}Proman</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/tiles.css') }}">
+        {% endblock head %}
+        <!--green color paletta: http://www.colourlovers.com/palette/108546/Into_The_Wood-->
+    </head>
+    <body>
+        <div id="content">{% block sidebar %}{% endblock sidebar %}</div>
+
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='gsap/tweenmax.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='gsap/tweenlite.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='gsap/draggable.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/tiles.js') }}"></script>
+        <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
