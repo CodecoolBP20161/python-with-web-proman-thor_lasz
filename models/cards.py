@@ -1,6 +1,6 @@
 from peewee import *
-from models.basemodel import BaseModel
-from models.boards import Boards
+from models.basemodel import *
+
 
 
 class Cards(BaseModel):
