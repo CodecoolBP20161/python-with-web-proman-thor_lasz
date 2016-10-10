@@ -29,6 +29,40 @@ storage_handler.save_new(elso);
 console.log(storage_handler.toString());
 
 
+function State(state){
+    this.state = state
+
+    this.toggleState = function(){
+
+    }
+
+    this.toString = function(){
+        this.state.toString()
+    }
+
+    this.load = function(){
+        this.state.load()
+    }
+
+    this.save = function(){
+        this.state.load()
+    }
+
+    this.get = function(){
+        this.state.get()
+    }
+
+    this.update = function(){
+        this.state.update()
+    }
+
+    this.delete = function(){
+        this.state.delete()
+    }
+
+}
+
+
 function LocalStorageManager(path){
 
     this.path = path;
@@ -50,7 +84,7 @@ function LocalStorageManager(path){
     }
 
     /** Saves one object instance into the list stored in localStorage. */
-    this.save_new = function(new_object){
+    this.save = function(new_object){
         var storage = this.load();
         if(storage == null){
             storage = [];
@@ -82,5 +116,17 @@ function LocalStorageManager(path){
             }
         }
         return null;
+    }
+
+    /** Deletes one object instance from the list stored in localStorage, returns null if the delete fails. */
+    this.delete = function(name){
+        var storage = this.load();
+        for(var i = 0; i < storage.length, i++){
+            if(storage[i] == name){
+                // itt kéne törölni
+                return;
+            }
+        }
+    return null;
     }
 }
