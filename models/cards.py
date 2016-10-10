@@ -1,8 +1,9 @@
 from peewee import *
 from models.basemodel import BaseModel
+from models.boards import Boards
 
 
-class Answer(BaseModel):
+class Cards(BaseModel):
     title = CharField()
     content = CharField()
     status = CharField()
