@@ -205,3 +205,16 @@ function saveBoard(board){
 /**
  * Handles drawing existing Board items from the localStorage.
  */
+$(function getData(url) {
+    $.ajax ( {
+        type: 'GET',
+        url: '/start'
+        dataType: 'json',
+        success: function (json) {
+            data = json;
+        }
+        error: function(error) {
+            console.log('error')
+        }
+    });
+});
