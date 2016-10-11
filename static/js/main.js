@@ -30,7 +30,10 @@ function drop(ev) {
     ev.target.appendChild(document.getElementById(data));
 }
 
-$("#currentCard").draggable({
-    handle: ".modal-header"
-});
+$( function() {
+    $( "#currentCard" ).draggable();
+  } );
 
+$(document).ready(function() {
+    $("#menu").accordion({collapsible: true, active: false});
+});

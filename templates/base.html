@@ -9,6 +9,7 @@
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/main.css') }}">
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/tiles.css') }}">
+        <link rel='stylesheet' type='text/css' href='http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css'/>
         {% endblock head %}
         <!--green color paletta: http://www.colourlovers.com/palette/108546/Into_The_Wood-->
     </head>
@@ -16,6 +17,7 @@
         <div id="content">{% block sidebar %}{% endblock sidebar %}</div>
 
         <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
         <script src="{{ url_for('static', filename='gsap/tweenmax.min.js') }}"></script>
         <script src="{{ url_for('static', filename='gsap/tweenlite.min.js') }}"></script>
         <script src="{{ url_for('static', filename='gsap/draggable.min.js') }}"></script>
