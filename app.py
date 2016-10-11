@@ -7,5 +7,9 @@ app = Flask(__name__)
 def index():
     return render_template('content.html')
 
+@app.route('/proba')
+def proba():
+    return render_template('proba.html')
+
 
 app.run(debug=True)

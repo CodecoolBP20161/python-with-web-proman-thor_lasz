@@ -153,3 +153,8 @@ body{
 .vermelho{ background:#CD0000; }
 .azul{ background:#4682B4; }
 .verde{ background-color: #2E8B57; }
+
+
+#currentCard{
+    color: green;
+}

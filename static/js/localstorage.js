@@ -20,44 +20,43 @@ function Card(title, content, owner){
 // Polymorhism: objects can share the same interface - with different underlying implementation
 
 
-var storage_handler = new LocalStorageManager("boards")
-
+var storage_handler = new State(new LocalStorageManager("boards"));
 var elso = new Board("első")
-
-storage_handler.save_new(elso);
-
+storage_handler.save(elso);
 console.log(storage_handler.toString());
+
 
 
 function State(state){
     this.state = state
+    this.options = ["localStorage", "api"]
 
-    this.toggleState = function(){
-
+    this.changeState = function(state){
+        this.state = state;
     }
 
     this.toString = function(){
-        this.state.toString()
+        console.log(this.state.toString());
     }
 
     this.load = function(){
-        this.state.load()
+        this.state.load();
     }
 
     this.save = function(){
-        this.state.load()
+        this.state.load();
     }
 
     this.get = function(){
-        this.state.get()
+        this.state.get();
     }
 
     this.update = function(){
-        this.state.update()
+        this.state.update();
     }
 
     this.delete = function(){
-        this.state.delete()
+        this.state.delete();
     }
 
 }
@@ -121,7 +120,7 @@ function LocalStorageManager(path){
     /** Deletes one object instance from the list stored in localStorage, returns null if the delete fails. */
     this.delete = function(name){
         var storage = this.load();
-        for(var i = 0; i < storage.length, i++){
+        for(var i = 0; i < storage.length; i++){
             if(storage[i] == name){
                 // itt kéne törölni
                 return;
