@@ -25,7 +25,6 @@ var elso = new Board("első")
 storage_handler.save(elso);
 console.log(storage_handler.toString());
 
-storage_handler.state(new PeeweeStorageHandler());
 
 function State(state){
     this.state = state

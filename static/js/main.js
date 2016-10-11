@@ -31,7 +31,7 @@ function drop(ev) {
 }
 
 $( function() {
-    $( "#currentCard" ).draggable();
+    $( "#currentBoard" ).draggable();
   } );
 
 $(document).ready(function() {
