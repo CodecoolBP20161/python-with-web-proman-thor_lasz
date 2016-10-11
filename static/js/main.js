@@ -208,12 +208,12 @@ function saveBoard(board){
 $(function getData(url) {
     $.ajax ( {
         type: 'GET',
-        url: '/start'
+        url: '/start',
         dataType: 'json',
-        success: function (json) {
+        success: function(json) {
             data = json;
         }
-        error: function(error) {
+        error: function() {
             console.log('error')
         }
     });
