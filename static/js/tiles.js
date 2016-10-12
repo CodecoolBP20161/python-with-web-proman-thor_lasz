@@ -1,22 +1,16 @@
-//Function to convert hex format to a rgb color
-function rgb2hex(rgb){
- rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
- return (rgb && rgb.length === 4) ? "#" +
-  ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
-  ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
-  ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
-}
+// todo:
+// - create tiles from inputlist
+// - create custom css tiles
 
-// alert( rgbToHex(0, 51, 255) ); // #0033ff
 //All code created by Blake Bowen
 //Forked from: http://codepen.io/osublake/pen/RNLdpz/
 
 // GRID OPTIONS
-var rowSize   = 100;
-var colSize   = 100;
-var gutter    = 7;     // Spacing between tiles
-var numTiles  = 20;    // Number of tiles to initially populate the grid with
-var fixedSize = false; // When true, each tile's colspan will be fixed to 1
+var rowSize   = 200;
+var colSize   = 200;
+var gutter    = 10;     // Spacing between tiles
+var numTiles  = 5;    // Number of tiles to initially populate the grid with
+var fixedSize = true; // When true, each tile's colspan will be fixed to 1
 var oneColumn = false; // When true, grid will only have 1 column and tiles have fixed colspan of 1
 var threshold = "50%"; // This is amount of overlap between tiles needed to detect a collision
 
@@ -125,9 +119,9 @@ function changePosition(from, to, rowToUpdate) {
 //  CREATE TILE
 // ========================================================================
 function createTile() {
-
+    var body = "<div class='card card-inverse board'><div class='card-block'><h3 class='card-title'>Board Title</h3><span aria-hidden='true'>&times;</span><p class='card-text'>Board content</p></div></div>";
   var colspan = fixedSize || oneColumn ? 1 : Math.floor(Math.random() * 2) + 1;
-  var element = $("<div></div>").addClass("tile").html(label++);
+  var element = $("<div></div>").addClass("tile").html(body);
   var lastX   = 0;
   // console.log(element.css)
   // $("#wrapper").toggleClass("active");
