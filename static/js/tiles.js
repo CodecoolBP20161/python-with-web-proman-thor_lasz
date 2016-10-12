@@ -119,7 +119,10 @@ function changePosition(from, to, rowToUpdate) {
 //  CREATE TILE
 // ========================================================================
 function createTile() {
-    var body = "<div class='card card-inverse board'><div class='card-block'><h3 class='card-title'>Board Title</h3><span aria-hidden='true'>&times;</span><p class='card-text'>Board content</p></div></div>";
+    var body = "<div class='card card-inverse board'>\
+    <span class=board-close aria-hidden='true'>&times;</span>\
+    <div class='card-block'><h3 class='card-title'>Board Title</h3>\
+    <p class='card-text'>Board content</p></div></div>";
   var colspan = fixedSize || oneColumn ? 1 : Math.floor(Math.random() * 2) + 1;
   var element = $("<div></div>").addClass("tile").html(body);
   var lastX   = 0;

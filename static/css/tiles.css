@@ -63,4 +63,21 @@ button {
   .layout input {
     margin-right: 3px; }
 
+
+.card-title {
+    text-align: center;
+    text-decoration: underline;
+    margin: 5px 15px 25px 15px}
+
+.card-text {
+    margin-left: 15px;
+    margin-right: 15px;
+    text-align: left;
+}
+
+.card-block > .board-close {
+    text-align: center;
+}
+
+
 /*# sourceMappingURL=proba.css.map */
