@@ -218,3 +218,10 @@ $(function getData(url) {
         }
     });
 });
+$(function delete(url) {
+       $.ajax({
+               type: "DELETE",
+               url: "/api/3",
+               });
+           });
+});

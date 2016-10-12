@@ -35,7 +35,17 @@ def get_tasks():
         return jsonify({'boards': "There are no boards"})
 
     else:
-        return jsonify({'boards': "There are boards"})
+        return jsonify({'boards': boards})
+
+
+@app.route('/api/<int:board_id>', methods=['GET', 'DELETE'])
+def delete(board_id):
+    if request.method == 'DELETE':
+        success = Boards.delete().where(Boards.id == board_id).execute()
+        if success > 0:
+            return jsonify({"Result": "Success"})
+        else:
+            return jsonify({"Result": "Failed"})
 
 
 app.run(debug=True)
