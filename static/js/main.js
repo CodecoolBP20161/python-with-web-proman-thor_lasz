@@ -213,15 +213,12 @@ $(function getData(url) {
         success: function(json) {
             data = json;
         }
-        error: function() {
-            console.log('error')
-        }
     });
 });
-$(function delete(url) {
+
+$(function delete2(url) {
        $.ajax({
                type: "DELETE",
                url: "/api/3",
                });
            });
-});
