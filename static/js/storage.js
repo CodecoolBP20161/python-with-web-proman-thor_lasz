@@ -23,6 +23,7 @@ function Card(title, content, owner){
 var storage_handler = new State(new LocalStorageManager("boards"));
 storage_handler.changeState(new ServerSideDataManager());
 storage_handler.load()
+storage_handler.delete(8)
 // console.log(storage_handler.toString());
 //
 
@@ -42,8 +43,8 @@ function State(state){
         this.state.load();
     }
 
-    this.save = function(){
-        this.state.load();
+    this.save = function(board){
+        this.state.load(board);
     }
 
     this.get = function(){
@@ -54,8 +55,8 @@ function State(state){
         this.state.update();
     }
 
-    this.delete = function(){
-        this.state.delete();
+    this.delete = function(board_id){
+        this.state.delete(board_id);
     }
 
 }
@@ -141,7 +142,7 @@ function ServerSideDataManager() {
                 });
     }
 
-    this.save = function() {
+    this.save = function(board) {
         $.ajax({
           type: "POST",
           url: "/save",
@@ -149,7 +150,7 @@ function ServerSideDataManager() {
           dataType: "text" }).
           success(function(resultData){
               alert("Save Complete");
-          });
+        });
     }
 
     this.get = function() {
@@ -159,15 +160,20 @@ function ServerSideDataManager() {
             dataType: 'json' }).
             done(function(json) {
                 return json;
-                });
-        console.log('get data');
+        });
     }
 
     this.update = function() {
         console.log("updating");
     }
 
-    this.delete = function() {
-        console.log("remove this");
+    this.delete = function(board_id) {
+        $.ajax ( {
+            type: 'DELETE',
+            url: '/api/delete/' + String(board_id),
+            dataType: 'json' }).
+            done(function(json) {
+                return json;
+        });
     }
 };
