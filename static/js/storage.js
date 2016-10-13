@@ -21,10 +21,10 @@ function Card(title, content, owner){
 
 
 var storage_handler = new State(new LocalStorageManager("boards"));
-var elso = new Board("első")
-storage_handler.save(elso);
-console.log(storage_handler.toString());
-
+storage_handler.changeState(new ServerSideDataManager());
+storage_handler.load()
+// console.log(storage_handler.toString());
+//
 
 function State(state){
     this.state = state
@@ -131,11 +131,24 @@ function LocalStorageManager(path){
 
 function ServerSideDataManager() {
     this.load = function() {
-        console.log('loading');
+        $.ajax ( {
+            type: 'GET',
+            url: '/start',
+            dataType: 'json' }).
+            done(function(json) {
+                return json;
+                });
     }
     this.save = function() {
-        console.log('saving');
-    }
+        $.ajax({
+          type: "POST",
+          url: "/save",
+          data: myDataVar.toString(),
+          dataType: "text",
+          success: function(resultData){
+              alert("Save Complete");
+          }
+});
     this.get = function() {
         console.log('get data');
     }
@@ -145,4 +158,5 @@ function ServerSideDataManager() {
     this.delete = function() {
         console.log("remove this");
     }
-}
+};
+};
