@@ -1,4 +1,5 @@
-function Board(title){
+function Board(id, title){
+    this.id = id
     this.title = title;
     this.cards = [];
 
@@ -22,9 +23,12 @@ function Card(title, content, owner){
 
 var storage_handler = new State(new LocalStorageManager("boards"));
 storage_handler.changeState(new ServerSideDataManager());
-storage_handler.load()
-storage_handler.delete(8)
-// console.log(storage_handler.toString());
+var current_boards = storage_handler.load();
+console.log(current_boards);
+
+storage_handler.delete(8);
+// board = new Board(5, 'shopping')
+// console.log(storage_handler.load())// console.log(storage_handler.toString());
 //
 
 function State(state){
@@ -40,7 +44,7 @@ function State(state){
     }
 
     this.load = function(){
-        this.state.load();
+        return this.state.load();
     }
 
     this.save = function(board){
@@ -133,14 +137,17 @@ function LocalStorageManager(path){
 function ServerSideDataManager() {
 
     this.load = function() {
-        $.ajax ( {
+
+        var response = $.ajax ({
             type: 'GET',
             url: '/start',
-            dataType: 'json' }).
-            done(function(json) {
-                return json;
-                });
-    }
+            dataType: 'json',
+            async: false});
+        console.log(response.responseJSON.boards);
+
+        return response.responseJSON.boards;
+
+    };
 
     this.save = function(board) {
         $.ajax({
@@ -163,9 +170,19 @@ function ServerSideDataManager() {
         });
     }
 
+
     this.update = function() {
+        $.ajax({
+          type: "POST",
+          url: "/save",
+          data: myDataVar.toString(),
+          dataType: "text" }).
+          success(function(resultData){
+              alert("Save Complete");
+        });
         console.log("updating");
     }
+
 
     this.delete = function(board_id) {
         $.ajax ( {

@@ -23,26 +23,26 @@ def delete(board_id):
             return jsonify({"Result": "Failed"})
 
 
-@app.route('/api/save/<board>', methods=['GET', 'POST', 'PUT'])
-def save(board):
-    print(board)
-    print(type(board))
-    print('\n')
-    d = json.loads(json.loads(board))
-    print(d)
-    print(type(d))
-
-    board = dict_to_model(Board, board)
-    if request.method == 'POST':
-        Board.create(**board).execute()
-        return jsonify({"Result": "Success"})
-
-    elif request.method == 'PUT':
-        for saved_board in Board.select():
-            if board.id == saved_board.id:
-                saved_board = board
-                return jsonify({"Result": "Success"})
-        return jsonify({"Result": "Failed"})
+# @app.route('/api/save/<board>', methods=['GET', 'POST', 'PUT'])
+# def save(board):
+#     print(board)
+#     print(type(board))
+#     print('\n')
+#     d = json.loads(json.loads(board))
+#     print(d)
+#     print(type(d))
+#
+#     board = dict_to_model(Board, board)
+#     if request.method == 'POST':
+#         Board.create(**board).execute()
+#         return jsonify({"Result": "Success"})
+#
+#     elif request.method == 'PUT':
+#         for saved_board in Board.select():
+#             if board.id == saved_board.id:
+#                 saved_board = board
+#                 return jsonify({"Result": "Success"})
+#         return jsonify({"Result": "Failed"})
 
 
 @app.route('/start', methods=['GET'])
@@ -69,6 +69,14 @@ def get_data(board_id):
             return jsonify({'board': board})
         except DoesNotExist:
             return jsonify({'board': "There is no such board"})
+
+
+# @app.route('api/edit/<int:board_id>', methods=['POST'])
+# def edit_board(board_id):
+#     if request.method == 'POST':
+#         pass
+
+
 
 
 
