@@ -61,6 +61,20 @@ def get_tasks():
         return jsonify({'boards': boards})
 
 
+@app.route('/api/get/<int:board_id>', methods=['GET'])
+def get_data(board_id):
+    if request.method == 'GET':
+        try:
+            board = model_to_dict(Board.get((Board.id == board_id)))
+            return jsonify({'board': board})
+        except DoesNotExist:
+            return jsonify({'board': "There is no such board"})
+
+
+
+
+
+
 
 
 

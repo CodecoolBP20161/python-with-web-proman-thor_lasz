@@ -130,6 +130,7 @@ function LocalStorageManager(path){
 }
 
 function ServerSideDataManager() {
+
     this.load = function() {
         $.ajax ( {
             type: 'GET',
@@ -139,24 +140,34 @@ function ServerSideDataManager() {
                 return json;
                 });
     }
+
     this.save = function() {
         $.ajax({
           type: "POST",
           url: "/save",
           data: myDataVar.toString(),
-          dataType: "text",
-          success: function(resultData){
+          dataType: "text" }).
+          success(function(resultData){
               alert("Save Complete");
-          }
-});
+          });
+    }
+
     this.get = function() {
+        $.ajax ( {
+            type: 'GET',
+            url: '/start',
+            dataType: 'json' }).
+            done(function(json) {
+                return json;
+                });
         console.log('get data');
     }
+
     this.update = function() {
         console.log("updating");
     }
+
     this.delete = function() {
         console.log("remove this");
     }
-};
 };
