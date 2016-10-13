@@ -71,11 +71,17 @@ def get_data(board_id):
             return jsonify({'board': "There is no such board"})
 
 
-# @app.route('api/edit/<int:board_id>', methods=['POST'])
-# def edit_board(board_id):
-#     if request.method == 'POST':
-#         pass
-
+@app.route('/save', methods=['GET', 'POST'])
+def save_board():
+    if request.method == 'POST':
+        for cucc in request.form:
+            my_dict = json.loads(cucc)
+            print(type(cucc))
+            print(my_dict)
+            print(type(my_dict))
+        # board = dict_to_model(Board, request.form)
+        # print(board)
+        return jsonify({'Message': "Szép volt!"})
 
 
 

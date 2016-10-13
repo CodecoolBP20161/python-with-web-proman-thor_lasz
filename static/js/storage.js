@@ -24,12 +24,10 @@ function Card(title, content, owner){
 var storage_handler = new State(new LocalStorageManager("boards"));
 storage_handler.changeState(new ServerSideDataManager());
 var current_boards = storage_handler.load();
-console.log(current_boards);
 
-storage_handler.delete(8);
-// board = new Board(5, 'shopping')
-// console.log(storage_handler.load())// console.log(storage_handler.toString());
-//
+board = new Board(current_boards[current_boards.length - 1].id + 1, 'shopping')
+console.log(storage_handler.save(board));
+
 
 function State(state){
     this.state = state
@@ -48,7 +46,7 @@ function State(state){
     }
 
     this.save = function(board){
-        this.state.load(board);
+        return this.state.save(board);
     }
 
     this.get = function(){
@@ -143,20 +141,20 @@ function ServerSideDataManager() {
             url: '/start',
             dataType: 'json',
             async: false});
-        console.log(response.responseJSON.boards);
 
         return response.responseJSON.boards;
 
     };
 
     this.save = function(board) {
+        console.log("saving");
         $.ajax({
           type: "POST",
           url: "/save",
-          data: myDataVar.toString(),
-          dataType: "text" }).
+          data: JSON.stringify(board),
+          dataType: "json" }).
           success(function(resultData){
-              alert("Save Complete");
+              console.log("Save succcessful.");
         });
     }
 
