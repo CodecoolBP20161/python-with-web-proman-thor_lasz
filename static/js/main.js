@@ -52,9 +52,9 @@ $(function getData(url) {
     });
 });
 
-$(function delete2(url) {
-       $.ajax({
-               type: "DELETE",
-               url: "/api/3",
-               });
-           });
+// $(function delete2(url) {
+//        $.ajax({
+//                type: "DELETE",
+//                url: "/api/3",
+//                });
+//            });

@@ -6,6 +6,7 @@ from playhouse.shortcuts import model_to_dict
 
 class Board(BaseModel):
     title = CharField()
+    cards = CharField(null=True)
 
 
 db.create_tables([Board], safe=True)
