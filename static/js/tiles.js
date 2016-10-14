@@ -121,6 +121,8 @@ function changePosition(from, to, rowToUpdate) {
 function createTile() {
     var body = "<div class='card card-inverse board'>\
     <span class=board-close aria-hidden='true'>&times;</span>\
+    <button class='btn btn-default delete' type='button'>\
+    <span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>\
     <div class='card-block'><h3 class='card-title'>Board Title</h3>\
     <p class='card-text'>Board content</p></div></div>";
   var colspan = fixedSize || oneColumn ? 1 : Math.floor(Math.random() * 2) + 1;
@@ -357,3 +359,14 @@ function layoutInvalidated(rowToUpdate) {
     timeline.to($list, 0.2, { height: height }, "reflow");
   }
 }
+
+$(document).ready(function() {
+    $("#menu").accordion({collapsible: true, active: false});
+    $(document.body).on('click', function(){
+        if (event.target.className == 'btn btn-default delete') {
+            console.log('valami');
+            console.log(event.target);
+            event.target.parentNode.parentNode.remove();
+        };
+    });
+});
