@@ -1,32 +1,39 @@
-{% extends "wrapper.html" %}
-{% block title %}Boards{% endblock title %}
-{% block head %}
-    {{ super() }}
-{% endblock head %}
+{% extends 'base.html' %}
 
+{% block sidebar %}
 
-{% block content %}
+<!-------------------------------------------------------------------------------------------------------------------->
 
-<div class="container-fluid">
-    <div class="row" id="big_board">
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+<div id="wrapper" class="active">
+    <div id="sidebar-wrapper">
+        <ul id="sidebar_menu" class="sidebar-nav">
+            <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="app-color glyphicon glyphicon-align-justify"></span></a></li>
+        </ul>
+        <ul class="sidebar-nav" id="sidebar">
+            <li id="add"><a>New Container<span class="sub_icon glyphicon glyphicon-plus-sign"></span></a></li>
+            <li id="second-link"><a>New Board<span class="sub_icon glyphicon glyphicon-plus-sign"></span></a></li>
+            <li id="third-link"><a>New Paper<span class="sub_icon glyphicon glyphicon-plus-sign"></span></a></li>
+        </ul>
+      </div>
 
-            <div class="board" id="board-adder-tile">
+      <!-- <button id="add">ADD TILE</button> -->
 
-                <div class="upper" id="show-text">
-                    <span class="title">New Board</span>
-                </div>
+    <!---------------------------------------------------------------------------------------------------------------->
 
-                <div class="upper" id="show-edit">
-                    <input id="title-input" type="text" class="form-control input-lg" name="title-from-tile" placeholder="Title">
-                </div>
-                <div class="bottom">
-                    <span class="glyphicon glyphicon-plus-sign bottom-sign" id="create_new_board_tile"></span>
-                </div>
-            </div>
+    <div id="page-content-wrapper">
+        <!-- Keep all page content within the page-content inset div! -->
+        <div class="page-content inset">
+            {% block content %}{% endblock content %}
         </div>
     </div>
 
 </div>
 
-{% endblock content %}
+<!-------------------------------------------------------------------------------------------------------------------->
+
+{% endblock sidebar %}
+
+<!--TODO:-->
+<!--http://bootsnipp.com/snippets/featured/toggle-navbar-->
+<!--http://bootsnipp.com/snippets/QXqM1-->
+<!--http://bootsnipp.com/snippets/featured/navigation-sidebar-with-toggle-->
